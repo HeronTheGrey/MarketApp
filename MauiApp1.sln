@@ -1,0 +1,29 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+#
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MauiMobile", "MauiMobile\MauiMobile.csproj", "{1D17953A-ECF4-45B3-9325-13E27A0186D3}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BlazorWebApp", "BlazorWebApp\BlazorWebApp.csproj", "{B3B63B9E-3667-4411-90DD-362143729CDC}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MauiMarket.Shared", "MauiMarket.Shared\MauiMarket.Shared.csproj", "{B19D2EC7-9FF0-4BE5-9D12-8A75827B1D9E}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{1D17953A-ECF4-45B3-9325-13E27A0186D3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1D17953A-ECF4-45B3-9325-13E27A0186D3}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1D17953A-ECF4-45B3-9325-13E27A0186D3}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1D17953A-ECF4-45B3-9325-13E27A0186D3}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B3B63B9E-3667-4411-90DD-362143729CDC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B3B63B9E-3667-4411-90DD-362143729CDC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B3B63B9E-3667-4411-90DD-362143729CDC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B3B63B9E-3667-4411-90DD-362143729CDC}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B19D2EC7-9FF0-4BE5-9D12-8A75827B1D9E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B19D2EC7-9FF0-4BE5-9D12-8A75827B1D9E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B19D2EC7-9FF0-4BE5-9D12-8A75827B1D9E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B19D2EC7-9FF0-4BE5-9D12-8A75827B1D9E}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+EndGlobal

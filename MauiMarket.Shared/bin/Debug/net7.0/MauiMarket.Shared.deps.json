@@ -1,0 +1,23 @@
+{
+  "runtimeTarget": {
+    "name": ".NETCoreApp,Version=v7.0",
+    "signature": ""
+  },
+  "compilationOptions": {},
+  "targets": {
+    ".NETCoreApp,Version=v7.0": {
+      "MauiMarket.Shared/1.0.0": {
+        "runtime": {
+          "MauiMarket.Shared.dll": {}
+        }
+      }
+    }
+  },
+  "libraries": {
+    "MauiMarket.Shared/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    }
+  }
+}

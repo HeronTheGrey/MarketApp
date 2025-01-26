@@ -43,3 +43,6 @@ C:\Users\bczaplicki\RiderProjects\MauiApp1\BlazorWebApp\bin\Debug\net7.0\Mono.Te
 C:\Users\bczaplicki\RiderProjects\MauiApp1\BlazorWebApp\bin\Debug\net7.0\System.CodeDom.dll
 C:\Users\bczaplicki\RiderProjects\MauiApp1\BlazorWebApp\bin\Debug\net7.0\MauiMarket.Shared.dll
 C:\Users\bczaplicki\RiderProjects\MauiApp1\BlazorWebApp\bin\Debug\net7.0\MauiMarket.Shared.pdb
+C:\Users\bczaplicki\RiderProjects\MauiApp1\BlazorWebApp\obj\Debug\net7.0\BlazorWebApp.sourcelink.json
+C:\Users\bczaplicki\RiderProjects\MauiApp1\BlazorWebApp\obj\Debug\net7.0\scopedcss\Pages\ProductDetails.razor.rz.scp.css
+C:\Users\bczaplicki\RiderProjects\MauiApp1\BlazorWebApp\obj\Debug\net7.0\scopedcss\Pages\AddProduct.razor.rz.scp.css

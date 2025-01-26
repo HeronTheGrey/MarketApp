@@ -1,9 +1,71 @@
-﻿@page "/"
+﻿@using MauiMarket.Shared.Models
+@inject HttpClient Http
+@page "/"
 
-<PageTitle>Index</PageTitle>
+<h1 class="page-title">Produkty</h1>
 
-<h1>Hello, world!</h1>
+<div class="content-container">
+    <!-- Wybór kategorii -->
+    <aside class="sidebar">
+        <h2>Kategorie</h2>
+        <ul class="category-list">
+            @if (categories == null)
+            {
+                <li>Pobieranie</li>
+            }
+            else
+            {
+                foreach (var category in categories)
+                {
+                    <li>
+                        <button @onclick="() => FilterByCategory(category.Id)" class="category-button">
+                            @category.Name
+                        </button>
+                    </li>
+                }
+            }
+        </ul>
+    </aside>
 
-Welcome to your new app.
+    <!-- Główna sekcja z produktami -->
+    <main class="product-grid">
+        @if (products == null)
+        {
+            <p class="loading">Pobieranie</p>
+        }
+        else if (!products.Any())
+        {
+            <p class="no-products">Brak produktów dla wybranej kategorii</p>
+        }
+        else
+        {
+            foreach (var product in products)
+            {
+                <div class="product-card">
+                    <div class="product-details">
+                        <h2 class="product-name">@product.Name</h2>
+                        <p class="product-description">@product.Description</p>
+                        <p class="product-price">Cena: @product.Price zł</p>
+                        <a href="/product/@product.Id" class="product-link">Szczegóły</a>
+                    </div>
+                </div>
+            }
+        }
+    </main>
+</div>
 
-<SurveyPrompt Title="How is Blazor working for you?" />
+@code {
+    private List<Product> products;
+    private List<Category> categories;
+
+    protected override async Task OnInitializedAsync()
+    {
+        categories = await Http.GetFromJsonAsync<List<Category>>("http://localhost:5217/api/category");
+        products = await Http.GetFromJsonAsync<List<Product>>("http://localhost:5217/api/products");
+    }
+
+    private async Task FilterByCategory(int categoryId)
+    {
+        products = await Http.GetFromJsonAsync<List<Product>>($"http://localhost:5217/api/products?categoryId={categoryId}");
+    }
+}

@@ -1,3 +1,114 @@
+/* _content/BlazorWebApp/Pages/AddProduct.razor.rz.scp.css */
+.product-add-form[b-7ni1jq5dfb] {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    max-width: 500px;
+    margin: 20px auto;
+    background-color: #f8f9fa;
+    padding: 20px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+}
+
+.product-add-form label[b-7ni1jq5dfb] {
+    display: flex;
+    flex-direction: column;
+    font-weight: bold;
+    margin-bottom: 10px;
+}
+
+.product-add-form input[b-7ni1jq5dfb],
+.product-add-form textarea[b-7ni1jq5dfb] {
+    font-size: 1rem;
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    margin-top: 5px;
+}
+
+button[b-7ni1jq5dfb] {
+    padding: 10px 15px;
+    font-size: 1rem;
+    color: white;
+    background-color: #007bff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+button:hover[b-7ni1jq5dfb] {
+    background-color: #0056b3;
+}
+
+button:nth-child(2)[b-7ni1jq5dfb] {
+    background-color: #6c757d;
+}
+
+button:nth-child(2):hover[b-7ni1jq5dfb] {
+    background-color: #5a6268;
+}
+/* _content/BlazorWebApp/Pages/ProductDetails.razor.rz.scp.css */
+.product-details[b-n3ivj0x4a4] {
+    max-width: 600px;
+    margin: 20px auto;
+    padding: 20px;
+    background-color: #f8f9fa;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+}
+
+.product-details p[b-n3ivj0x4a4] {
+    margin: 10px 0;
+    font-size: 1rem;
+    line-height: 1.5;
+}
+
+.product-edit-form[b-n3ivj0x4a4] {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.product-edit-form label[b-n3ivj0x4a4] {
+    display: flex;
+    flex-direction: column;
+    font-weight: bold;
+    margin-bottom: 10px;
+}
+
+.product-edit-form input[b-n3ivj0x4a4],
+.product-edit-form textarea[b-n3ivj0x4a4] {
+    font-size: 1rem;
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    margin-top: 5px;
+}
+
+button[b-n3ivj0x4a4] {
+    padding: 10px 15px;
+    font-size: 1rem;
+    color: white;
+    background-color: #007bff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+button:hover[b-n3ivj0x4a4] {
+    background-color: #0056b3;
+}
+
+button:nth-child(2)[b-n3ivj0x4a4] {
+    background-color: #dc3545;
+}
+
+button:nth-child(2):hover[b-n3ivj0x4a4] {
+    background-color: #c82333;
+}
 /* _content/BlazorWebApp/Shared/MainLayout.razor.rz.scp.css */
 .page[b-ki56p73jl8] {
     position: relative;

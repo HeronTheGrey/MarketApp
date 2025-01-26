@@ -1,0 +1,51 @@
+@using MauiMarket.Shared.Models
+@inject HttpClient Http
+@inject NavigationManager Navigation
+@page "/add-product"
+
+<h1>Dodaj nowy produkt</h1>
+
+<div class="product-add-form">
+    <label>
+        Nazwa:
+        <input type="text" @bind="product.Name" />
+    </label>
+    <label>
+        Opis:
+        <textarea @bind="product.Description"></textarea>
+    </label>
+    <label>
+        Cena:
+        <input type="number" step="0.01" @bind="product.Price" />
+    </label>
+    <label>
+        Category ID:
+        <input type="number" @bind="product.CategoryId" />
+    </label>
+    <button @onclick="Add">Dodaj</button>
+    <button @onclick="Cancel">Anuluj</button>
+</div>
+
+@code {
+    private Product product = new Product();
+
+    private async Task Add()
+    {
+        var response = await Http.PostAsJsonAsync("http://localhost:5217/api/products", product);
+
+        if (response.IsSuccessStatusCode)
+        {
+            Console.WriteLine("Product added successfully!");
+            Navigation.NavigateTo("/");
+        }
+        else
+        {
+            Console.WriteLine("Failed to add product.");
+        }
+    }
+
+    private void Cancel()
+    {
+        Navigation.NavigateTo("/");
+    }
+}

@@ -14,7 +14,17 @@ builder.Services.AddDbContext<AppDbContext>(options =>
 // Add services to the container.
 builder.Services.AddRazorPages();
 builder.Services.AddServerSideBlazor();
-builder.Services.AddSingleton<WeatherForecastService>();
+builder.Services.AddControllers();
+
+
+var baseAddress = builder.Configuration.GetSection("ApiSettings:BaseAddress").Value;
+
+// builder.Services.AddHttpClient<HttpClient>(client =>
+// {
+//     client.BaseAddress = new Uri(baseAddress ?? throw new InvalidOperationException("BaseAddress is not configured"));
+// });
+builder.Services.AddHttpClient();
+
 
 var app = builder.Build();
 
@@ -34,5 +44,6 @@ app.UseRouting();
 
 app.MapBlazorHub();
 app.MapFallbackToPage("/_Host");
+app.MapControllers();
 
 app.Run();

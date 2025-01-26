@@ -1,0 +1,108 @@
+@using MauiMarket.Shared.Models
+@inject HttpClient Http
+@inject NavigationManager Navigation
+@page "/product/{id:int}"
+
+<h1>Szczegóły</h1>
+
+@if (product == null)
+{
+    <p>Ładowanie szczegółów...</p>
+}
+else
+{
+    <div class="product-details">
+        @if (!isEditing)
+        {
+            <div>
+                <p><strong>Nazwa:</strong> @product.Name</p>
+                <p><strong>Opis:</strong> @product.Description</p>
+                <p><strong>Cena:</strong> @product.Price zł</p>
+                <button @onclick="EnableEditing">Modyfikuj</button>
+                <button @onclick="DeleteProduct">Usuń</button>
+                <button @onclick="GoBack">Wróć</button>
+            </div>
+        }
+        else
+        {
+            <div class="product-edit-form">
+                <label>
+                    Nazwa:
+                    <input type="text" @bind="product.Name"/>
+                </label>
+                <label>
+                    Opis:
+                    <textarea @bind="product.Description"></textarea>
+                </label>
+                <label>
+                    Cena:
+                    <input type="number" step="0.01" @bind="product.Price"/>
+                </label>
+                <label>
+                    Category ID:
+                    <input type="number" @bind="product.CategoryId"/>
+                </label>
+                <button @onclick="SaveChanges">Zapisz</button>
+                <button @onclick="CancelEditing">Cofnij</button>
+            </div>
+        }
+    </div>
+}
+
+@code {
+    [Parameter] public int Id { get; set; }
+
+    private Product product;
+    private bool isEditing = false;
+
+    protected override async Task OnInitializedAsync()
+    {
+        // Pobierz szczegóły produktu z API
+        product = await Http.GetFromJsonAsync<Product>($"http://localhost:5217/api/products/{Id}");
+    }
+
+    private void EnableEditing()
+    {
+        isEditing = true;
+    }
+    private async Task SaveChanges()
+    {
+        // Wyślij zmodyfikowane dane produktu do API
+        var response = await Http.PutAsJsonAsync($"http://localhost:5217/api/products/{Id}", product);
+
+        if (response.IsSuccessStatusCode)
+        {
+            Console.WriteLine("Product updated successfully!");
+            isEditing = false;
+        }
+        else
+        {
+            Console.WriteLine("Failed to update product.");
+        }
+    }
+
+    private void CancelEditing()
+    {
+        isEditing = false;
+    }
+
+    private async Task DeleteProduct()
+    {
+        var response = await Http.DeleteAsync($"http://localhost:5217/api/products/{Id}");
+
+        if (response.IsSuccessStatusCode)
+        {
+            Console.WriteLine("Product deleted successfully!");
+            Navigation.NavigateTo("/");
+        }
+        else
+        {
+            Console.WriteLine("Failed to delete product.");
+        }
+    }
+    
+    private void GoBack()
+    {
+        Navigation.NavigateTo("/");
+    }
+}

@@ -6,7 +6,8 @@ namespace MauiMobile;
 public partial class ProductListPage : ContentPage
 {
     private readonly HttpClient _httpClient;
-
+    private List<Product> allProducts = new List<Product>();
+    
     public ProductListPage(HttpClient httpClient)
     {
         InitializeComponent();
@@ -17,8 +18,8 @@ public partial class ProductListPage : ContentPage
     {
         base.OnAppearing();
 
-        var products = await _httpClient.GetFromJsonAsync<List<Product>>("products");
-        ProductListView.ItemsSource = products;
+        allProducts = await _httpClient.GetFromJsonAsync<List<Product>>("products");
+        ProductListView.ItemsSource = allProducts;
     }
 
     private async void OnProductSelected(object sender, SelectedItemChangedEventArgs e)
@@ -32,5 +33,13 @@ public partial class ProductListPage : ContentPage
     private async void OnAddProductClicked(object sender, EventArgs e)
     {
         await Navigation.PushAsync(new AddProductPage(_httpClient));
+    }
+    
+    private void OnSearchTextChanged(object sender, TextChangedEventArgs e)
+    {
+        var searchText = e.NewTextValue.ToLower();
+        ProductListView.ItemsSource = allProducts
+            .Where(p => p.Name.ToLower().Contains(searchText))
+            .ToList();
     }
 }

@@ -3,6 +3,8 @@
              x:Class="MauiMobile.ProductListPage"
              Title="Lista produktów">
     <StackLayout Padding="10">
+        <SearchBar x:Name="ProductSearchBar" Placeholder="Search products"
+                   TextChanged="OnSearchTextChanged" />
         <Button Text="Dodaj nowy produkt" Clicked="OnAddProductClicked" BackgroundColor="#28a745" TextColor="White" />
         <ListView x:Name="ProductListView" ItemSelected="OnProductSelected">
             <ListView.ItemTemplate>

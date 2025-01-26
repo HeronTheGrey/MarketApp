@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("MauiMobile")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0+6fe87b18641ab26b40c5988ac3fa1882d8ca83b2")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0+02cf74c90f07ca202a41e55fe7c492d2ae126ceb")]
 [assembly: System.Reflection.AssemblyProductAttribute("MauiMobile")]
 [assembly: System.Reflection.AssemblyTitleAttribute("MauiMobile")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

@@ -3,12 +3,17 @@
 @page "/"
 
 <h1 class="page-title">Produkty</h1>
-
+<input type="text" @bind="searchText" placeholder="Search products" />
 <div class="content-container">
     <!-- Wybór kategorii -->
     <aside class="sidebar">
         <h2>Kategorie</h2>
         <ul class="category-list">
+            <li>
+                <button @onclick="ClearCategoryFilter" class="category-button">
+                    Wszystkie kategorie
+                </button>
+            </li>
             @if (categories == null)
             {
                 <li>Pobieranie</li>
@@ -27,6 +32,8 @@
         </ul>
     </aside>
 
+    
+    
     <!-- Główna sekcja z produktami -->
     <main class="product-grid">
         @if (products == null)
@@ -39,7 +46,7 @@
         }
         else
         {
-            foreach (var product in products)
+            foreach (var product in filteredProducts)
             {
                 <div class="product-card">
                     <div class="product-details">
@@ -54,9 +61,35 @@
     </main>
 </div>
 
+@* @code { *@
+@*     private List<Product> products; *@
+@*     private List<Category> categories; *@
+@*     private string searchText = ""; *@
+@*     private List<Product> allProducts = new List<Product>(); *@
+@*     private IEnumerable<Product> filteredProducts => allProducts *@
+@*         .Where(p => p.Name.Contains(searchText, StringComparison.OrdinalIgnoreCase)); *@
+@*      *@
+@*     protected override async Task OnInitializedAsync() *@
+@*     { *@
+@*         categories = await Http.GetFromJsonAsync<List<Category>>("http://localhost:5217/api/category"); *@
+@*         allProducts = await Http.GetFromJsonAsync<List<Product>>("http://localhost:5217/api/products"); *@
+@*     } *@
+@* *@
+@*     private async Task FilterByCategory(int categoryId) *@
+@*     { *@
+@*         allProducts = await Http.GetFromJsonAsync<List<Product>>($"http://localhost:5217/api/products?categoryId={categoryId}"); *@
+@*     } *@
+@* } *@
+
 @code {
     private List<Product> products;
     private List<Category> categories;
+    private string searchText = "";
+    private int? selectedCategoryId = null;
+
+    private IEnumerable<Product> filteredProducts => products
+        .Where(p => (string.IsNullOrWhiteSpace(searchText) || p.Name.Contains(searchText, StringComparison.OrdinalIgnoreCase)) &&
+                    (!selectedCategoryId.HasValue || p.CategoryId == selectedCategoryId.Value));
 
     protected override async Task OnInitializedAsync()
     {
@@ -64,8 +97,13 @@
         products = await Http.GetFromJsonAsync<List<Product>>("http://localhost:5217/api/products");
     }
 
-    private async Task FilterByCategory(int categoryId)
+    private void FilterByCategory(int categoryId)
     {
-        products = await Http.GetFromJsonAsync<List<Product>>($"http://localhost:5217/api/products?categoryId={categoryId}");
+        selectedCategoryId = categoryId;
+    }
+
+    private void ClearCategoryFilter()
+    {
+        selectedCategoryId = null; // Usunięcie filtra kategorii
     }
 }

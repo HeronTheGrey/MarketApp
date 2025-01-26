@@ -1936,6 +1936,16 @@
         "build": {
           "buildTransitive/net6.0-android31.0/Xamarin.KotlinX.Coroutines.Core.Jvm.targets": {}
         }
+      },
+      "MauiMarket.Shared/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v7.0",
+        "compile": {
+          "bin/placeholder/MauiMarket.Shared.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/MauiMarket.Shared.dll": {}
+        }
       }
     },
     "net7.0-android33.0/android-arm": {
@@ -3872,6 +3882,16 @@
         },
         "build": {
           "buildTransitive/net6.0-android31.0/Xamarin.KotlinX.Coroutines.Core.Jvm.targets": {}
+        }
+      },
+      "MauiMarket.Shared/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v7.0",
+        "compile": {
+          "bin/placeholder/MauiMarket.Shared.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/MauiMarket.Shared.dll": {}
         }
       }
     },
@@ -5810,6 +5830,16 @@
         "build": {
           "buildTransitive/net6.0-android31.0/Xamarin.KotlinX.Coroutines.Core.Jvm.targets": {}
         }
+      },
+      "MauiMarket.Shared/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v7.0",
+        "compile": {
+          "bin/placeholder/MauiMarket.Shared.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/MauiMarket.Shared.dll": {}
+        }
       }
     },
     "net7.0-android33.0/android-x64": {
@@ -7746,6 +7776,16 @@
         },
         "build": {
           "buildTransitive/net6.0-android31.0/Xamarin.KotlinX.Coroutines.Core.Jvm.targets": {}
+        }
+      },
+      "MauiMarket.Shared/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v7.0",
+        "compile": {
+          "bin/placeholder/MauiMarket.Shared.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/MauiMarket.Shared.dll": {}
         }
       }
     },
@@ -9684,6 +9724,16 @@
         "build": {
           "buildTransitive/net6.0-android31.0/Xamarin.KotlinX.Coroutines.Core.Jvm.targets": {}
         }
+      },
+      "MauiMarket.Shared/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v7.0",
+        "compile": {
+          "bin/placeholder/MauiMarket.Shared.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/MauiMarket.Shared.dll": {}
+        }
       }
     },
     "net7.0-android33.0/iossimulator-x64": {
@@ -11621,6 +11671,16 @@
         "build": {
           "buildTransitive/net6.0-android31.0/Xamarin.KotlinX.Coroutines.Core.Jvm.targets": {}
         }
+      },
+      "MauiMarket.Shared/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v7.0",
+        "compile": {
+          "bin/placeholder/MauiMarket.Shared.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/MauiMarket.Shared.dll": {}
+        }
       }
     },
     "net7.0-ios16.1": {
@@ -11816,6 +11876,16 @@
         "type": "package",
         "build": {
           "build/Microsoft.NET.ILLink.Tasks.props": {}
+        }
+      },
+      "MauiMarket.Shared/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v7.0",
+        "compile": {
+          "bin/placeholder/MauiMarket.Shared.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/MauiMarket.Shared.dll": {}
         }
       }
     },
@@ -12013,6 +12083,16 @@
         "build": {
           "build/Microsoft.NET.ILLink.Tasks.props": {}
         }
+      },
+      "MauiMarket.Shared/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v7.0",
+        "compile": {
+          "bin/placeholder/MauiMarket.Shared.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/MauiMarket.Shared.dll": {}
+        }
       }
     },
     "net7.0-ios16.1/android-arm64": {
@@ -12208,6 +12288,16 @@
         "type": "package",
         "build": {
           "build/Microsoft.NET.ILLink.Tasks.props": {}
+        }
+      },
+      "MauiMarket.Shared/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v7.0",
+        "compile": {
+          "bin/placeholder/MauiMarket.Shared.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/MauiMarket.Shared.dll": {}
         }
       }
     },
@@ -12405,6 +12495,16 @@
         "build": {
           "build/Microsoft.NET.ILLink.Tasks.props": {}
         }
+      },
+      "MauiMarket.Shared/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v7.0",
+        "compile": {
+          "bin/placeholder/MauiMarket.Shared.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/MauiMarket.Shared.dll": {}
+        }
       }
     },
     "net7.0-ios16.1/android-x86": {
@@ -12601,6 +12701,16 @@
         "build": {
           "build/Microsoft.NET.ILLink.Tasks.props": {}
         }
+      },
+      "MauiMarket.Shared/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v7.0",
+        "compile": {
+          "bin/placeholder/MauiMarket.Shared.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/MauiMarket.Shared.dll": {}
+        }
       }
     },
     "net7.0-ios16.1/iossimulator-x64": {
@@ -12796,6 +12906,16 @@
         "type": "package",
         "build": {
           "build/Microsoft.NET.ILLink.Tasks.props": {}
+        }
+      },
+      "MauiMarket.Shared/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v7.0",
+        "compile": {
+          "bin/placeholder/MauiMarket.Shared.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/MauiMarket.Shared.dll": {}
         }
       }
     }
@@ -15199,10 +15319,16 @@
         "xamarin.kotlinx.coroutines.core.jvm.1.6.4.1.nupkg.sha512",
         "xamarin.kotlinx.coroutines.core.jvm.nuspec"
       ]
+    },
+    "MauiMarket.Shared/1.0.0": {
+      "type": "project",
+      "path": "../MauiMarket.Shared/MauiMarket.Shared.csproj",
+      "msbuildProject": "../MauiMarket.Shared/MauiMarket.Shared.csproj"
     }
   },
   "projectFileDependencyGroups": {
     "net7.0-android33.0": [
+      "MauiMarket.Shared >= 1.0.0",
       "Microsoft.Extensions.Configuration >= 7.0.0",
       "Microsoft.Extensions.DependencyInjection >= 7.0.0",
       "Microsoft.Extensions.Logging >= 7.0.0",
@@ -15223,6 +15349,7 @@
       "Xamarin.Google.Crypto.Tink.Android >= 1.7.0.1"
     ],
     "net7.0-ios16.1": [
+      "MauiMarket.Shared >= 1.0.0",
       "Microsoft.Extensions.Configuration >= 7.0.0",
       "Microsoft.Extensions.DependencyInjection >= 7.0.0",
       "Microsoft.Extensions.Logging >= 7.0.0",
@@ -15259,11 +15386,19 @@
       "frameworks": {
         "net7.0-android33.0": {
           "targetAlias": "net7.0-android",
-          "projectReferences": {}
+          "projectReferences": {
+            "C:\\Users\\bczaplicki\\RiderProjects\\MauiApp1\\MauiMarket.Shared\\MauiMarket.Shared.csproj": {
+              "projectPath": "C:\\Users\\bczaplicki\\RiderProjects\\MauiApp1\\MauiMarket.Shared\\MauiMarket.Shared.csproj"
+            }
+          }
         },
         "net7.0-ios16.1": {
           "targetAlias": "net7.0-ios",
-          "projectReferences": {}
+          "projectReferences": {
+            "C:\\Users\\bczaplicki\\RiderProjects\\MauiApp1\\MauiMarket.Shared\\MauiMarket.Shared.csproj": {
+              "projectPath": "C:\\Users\\bczaplicki\\RiderProjects\\MauiApp1\\MauiMarket.Shared\\MauiMarket.Shared.csproj"
+            }
+          }
         }
       },
       "warningProperties": {

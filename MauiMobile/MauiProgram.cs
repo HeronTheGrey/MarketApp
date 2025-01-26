@@ -14,6 +14,17 @@ public static class MauiProgram
                 fonts.AddFont("OpenSans-Regular.ttf", "OpenSansRegular");
                 fonts.AddFont("OpenSans-Semibold.ttf", "OpenSansSemibold");
             });
+        builder.Services.AddSingleton<HttpClient>(sp =>
+        {
+            var httpClient = new HttpClient
+            {
+                BaseAddress = new Uri("http://10.0.2.2:5217/api/")
+            };
+            return httpClient;
+        });
+        builder.Services.AddSingleton<ProductListPage>();
+        builder.Services.AddTransient<ProductDetailsPage>();
+
 
 #if DEBUG
         builder.Logging.AddDebug();

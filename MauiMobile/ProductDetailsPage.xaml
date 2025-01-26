@@ -1,0 +1,14 @@
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="MauiMobile.ProductDetailsPage"
+             Title="Product Details">
+    <StackLayout Padding="10">
+        <Entry x:Name="NameEntry" Placeholder="Name" Text="{Binding Name}" />
+        <Entry x:Name="PriceEntry" Placeholder="Price" Text="{Binding Price}" Keyboard="Numeric" />
+        <Editor x:Name="DescriptionEditor" Placeholder="Description" Text="{Binding Description}" />
+        <Entry x:Name="CategoryIdEntry" Placeholder="Category ID" Text="{Binding CategoryId}" Keyboard="Numeric" />
+        <Button Text="Save" Clicked="OnSaveClicked" />
+        <Button Text="Delete" Clicked="OnDeleteClicked" />
+        <Button Text="Back" Clicked="OnBackClicked" />
+    </StackLayout>
+</ContentPage>

@@ -1,23 +1,36 @@
-﻿namespace MauiMobile;
+﻿using System.Net.Http.Json;
+using MauiMarket.Shared.Models;
 
-public partial class MainPage : ContentPage
+namespace MauiMobile;
+
+public partial class ProductListPage : ContentPage
 {
-    int count = 0;
+    private readonly HttpClient _httpClient;
 
-    public MainPage()
+    public ProductListPage(HttpClient httpClient)
     {
         InitializeComponent();
+        _httpClient = httpClient;
     }
 
-    private void OnCounterClicked(object sender, EventArgs e)
+    protected override async void OnAppearing()
     {
-        count++;
+        base.OnAppearing();
 
-        if (count == 1)
-            CounterBtn.Text = $"Clicked {count} time";
-        else
-            CounterBtn.Text = $"Clicked {count} times";
-
-        SemanticScreenReader.Announce(CounterBtn.Text);
+        var products = await _httpClient.GetFromJsonAsync<List<Product>>("products");
+        ProductListView.ItemsSource = products;
     }
+
+    private async void OnProductSelected(object sender, SelectedItemChangedEventArgs e)
+    {
+        if (e.SelectedItem is Product selectedProduct)
+        {
+            await Navigation.PushAsync(new ProductDetailsPage(selectedProduct, _httpClient));
+        }
+    }
+
+    // private async void OnAddProductClicked(object sender, EventArgs e)
+    // {
+    //     await Navigation.PushAsync(new AddProductPage());
+    // }
 }

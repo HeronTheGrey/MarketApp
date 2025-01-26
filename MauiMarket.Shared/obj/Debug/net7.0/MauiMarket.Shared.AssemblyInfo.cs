@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("MauiMarket.Shared")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+684a31835dd891575b95229d71618a3757ab12e1")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+077f5c12231c048b5e44ad8e4eea9354429e2629")]
 [assembly: System.Reflection.AssemblyProductAttribute("MauiMarket.Shared")]
 [assembly: System.Reflection.AssemblyTitleAttribute("MauiMarket.Shared")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

@@ -29,8 +29,8 @@ public partial class ProductListPage : ContentPage
         }
     }
 
-    // private async void OnAddProductClicked(object sender, EventArgs e)
-    // {
-    //     await Navigation.PushAsync(new AddProductPage());
-    // }
+    private async void OnAddProductClicked(object sender, EventArgs e)
+    {
+        await Navigation.PushAsync(new AddProductPage(_httpClient));
+    }
 }

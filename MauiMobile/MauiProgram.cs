@@ -24,7 +24,7 @@ public static class MauiProgram
         });
         builder.Services.AddSingleton<ProductListPage>();
         builder.Services.AddTransient<ProductDetailsPage>();
-
+        builder.Services.AddTransient<AddProductPage>();
 
 #if DEBUG
         builder.Logging.AddDebug();

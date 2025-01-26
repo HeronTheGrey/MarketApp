@@ -1,0 +1,23 @@
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="MauiMobile.AddProductPage"
+             Title="Add Product">
+    <ScrollView>
+        <StackLayout Padding="20" Spacing="15">
+            <Label Text="Name" FontSize="18" />
+            <Entry x:Name="NameEntry" Placeholder="Enter product name" />
+
+            <Label Text="Description" FontSize="18" />
+            <Editor x:Name="DescriptionEditor" Placeholder="Enter product description" HeightRequest="100" />
+
+            <Label Text="Price" FontSize="18" />
+            <Entry x:Name="PriceEntry" Placeholder="Enter product price" Keyboard="Numeric" />
+
+            <Label Text="Category ID" FontSize="18" />
+            <Entry x:Name="CategoryIdEntry" Placeholder="Enter category ID" Keyboard="Numeric" />
+
+            <Button Text="Add Product" Clicked="OnAddProductClicked" BackgroundColor="#007bff" TextColor="White" />
+            <Button Text="Cancel" Clicked="OnCancelClicked" BackgroundColor="#6c757d" TextColor="White" />
+        </StackLayout>
+    </ScrollView>
+</ContentPage>

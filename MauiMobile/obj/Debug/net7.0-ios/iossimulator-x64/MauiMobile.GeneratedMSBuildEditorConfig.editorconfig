@@ -16,6 +16,12 @@ build_property.ProjectDir = C:\Users\bczaplicki\RiderProjects\MauiApp1\MauiMobil
 build_property.EnableComHosting = 
 build_property.EnableGeneratedComInterfaceComImportInterop = 
 
+[C:/Users/bczaplicki/RiderProjects/MauiApp1/MauiMobile/AddProductPage.xaml]
+build_metadata.AdditionalFiles.GenKind = Xaml
+build_metadata.AdditionalFiles.ManifestResourceName = MauiMobile.AddProductPage.xaml
+build_metadata.AdditionalFiles.TargetPath = AddProductPage.xaml
+build_metadata.AdditionalFiles.RelativePath = AddProductPage.xaml
+
 [C:/Users/bczaplicki/RiderProjects/MauiApp1/MauiMobile/App.xaml]
 build_metadata.AdditionalFiles.GenKind = Xaml
 build_metadata.AdditionalFiles.ManifestResourceName = MauiMobile.App.xaml

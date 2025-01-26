@@ -39,8 +39,14 @@ else
                     <input type="number" step="0.01" @bind="product.Price"/>
                 </label>
                 <label>
-                    Category ID:
-                    <input type="number" @bind="product.CategoryId"/>
+                    Kategoria:
+                    <select @bind="selectedCategoryId">
+                        <option value="">-- Wybierz kategorię --</option>
+                        @foreach (var category in categories)
+                        {
+                            <option value="@category.Id">@category.Name</option>
+                        }
+                    </select>
                 </label>
                 <button @onclick="SaveChanges">Zapisz</button>
                 <button @onclick="CancelEditing">Cofnij</button>
@@ -54,11 +60,14 @@ else
 
     private Product product;
     private bool isEditing = false;
+    
+    private List<Category> categories = new List<Category>();
+    private int? selectedCategoryId;
 
     protected override async Task OnInitializedAsync()
     {
-        // Pobierz szczegóły produktu z API
         product = await Http.GetFromJsonAsync<Product>($"http://localhost:5217/api/products/{Id}");
+        categories = await Http.GetFromJsonAsync<List<Category>>("http://localhost:5217/api/category");
     }
 
     private void EnableEditing()
@@ -67,7 +76,7 @@ else
     }
     private async Task SaveChanges()
     {
-        // Wyślij zmodyfikowane dane produktu do API
+        product.CategoryId = selectedCategoryId.Value;
         var response = await Http.PutAsJsonAsync($"http://localhost:5217/api/products/{Id}", product);
 
         if (response.IsSuccessStatusCode)

@@ -19,8 +19,14 @@
         <input type="number" step="0.01" @bind="product.Price" />
     </label>
     <label>
-        Category ID:
-        <input type="number" @bind="product.CategoryId" />
+        Kategoria:
+        <select @bind="selectedCategoryId">
+            <option value="">-- Wybierz kategorię --</option>
+            @foreach (var category in categories)
+            {
+                <option value="@category.Id">@category.Name</option>
+            }
+        </select>
     </label>
     <button @onclick="Add">Dodaj</button>
     <button @onclick="Cancel">Anuluj</button>
@@ -29,8 +35,17 @@
 @code {
     private Product product = new Product();
 
+    private List<Category> categories = new List<Category>();
+    private int? selectedCategoryId;
+
+    protected override async Task OnInitializedAsync()
+    {
+        categories = await Http.GetFromJsonAsync<List<Category>>("http://localhost:5217/api/category");
+    }
     private async Task Add()
     {
+        product.CategoryId = selectedCategoryId.Value;
+
         var response = await Http.PostAsJsonAsync("http://localhost:5217/api/products", product);
 
         if (response.IsSuccessStatusCode)

@@ -7,8 +7,8 @@
         <Entry x:Name="PriceEntry" Placeholder="Price" Text="{Binding Price}" Keyboard="Numeric" />
         <Editor x:Name="DescriptionEditor" Placeholder="Description" Text="{Binding Description}" />
         <Entry x:Name="CategoryIdEntry" Placeholder="Category ID" Text="{Binding CategoryId}" Keyboard="Numeric" />
-        <Button Text="Save" Clicked="OnSaveClicked" />
-        <Button Text="Delete" Clicked="OnDeleteClicked" />
-        <Button Text="Back" Clicked="OnBackClicked" />
+        <Button Text="Zapisz" Clicked="OnSaveClicked" />
+        <Button Text="Usuń" Clicked="OnDeleteClicked" />
+        <Button Text="Cofnij" Clicked="OnBackClicked" />
     </StackLayout>
 </ContentPage>

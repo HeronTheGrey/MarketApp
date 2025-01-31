@@ -1,5 +1,6 @@
 using BlazorWebApp.Data;
 using MauiMarket.Shared.Models;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 
@@ -74,7 +75,7 @@ public class ProductsController : ControllerBase
 
         try
         {
-            _context.Update(product); // Nadpisuje cały rekord w bazie
+            _context.Update(product);
             await _context.SaveChangesAsync();
         }
         catch (DbUpdateConcurrencyException)

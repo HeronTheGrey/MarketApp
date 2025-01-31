@@ -18,9 +18,17 @@ else
                 <p><strong>Nazwa:</strong> @product.Name</p>
                 <p><strong>Opis:</strong> @product.Description</p>
                 <p><strong>Cena:</strong> @product.Price zł</p>
-                <button @onclick="EnableEditing">Modyfikuj</button>
-                <button @onclick="DeleteProduct">Usuń</button>
+                <AuthorizeView>
+                    <Authorized>
+                        <button @onclick="EnableEditing">Modyfikuj</button>
+                    </Authorized>
+                </AuthorizeView>
+                <AuthorizeView Roles="Admin">
+                    <button @onclick="DeleteProduct">Usuń</button>
+                </AuthorizeView>
                 <button @onclick="GoBack">Wróć</button>
+
+                
             </div>
         }
         else
@@ -60,7 +68,7 @@ else
 
     private Product product;
     private bool isEditing = false;
-    
+
     private List<Category> categories = new List<Category>();
     private int? selectedCategoryId;
 
@@ -68,12 +76,14 @@ else
     {
         product = await Http.GetFromJsonAsync<Product>($"http://localhost:5217/api/products/{Id}");
         categories = await Http.GetFromJsonAsync<List<Category>>("http://localhost:5217/api/category");
+        selectedCategoryId = product.CategoryId;
     }
 
     private void EnableEditing()
     {
         isEditing = true;
     }
+
     private async Task SaveChanges()
     {
         product.CategoryId = selectedCategoryId.Value;
@@ -109,9 +119,10 @@ else
             Console.WriteLine("Failed to delete product.");
         }
     }
-    
+
     private void GoBack()
     {
         Navigation.NavigateTo("/");
     }
+
 }

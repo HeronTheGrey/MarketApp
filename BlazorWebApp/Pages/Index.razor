@@ -3,7 +3,7 @@
 @page "/"
 
 <h1 class="page-title">Produkty</h1>
-<input type="text" @bind="searchText" placeholder="Search products" />
+<input type="text" @bind="searchText" placeholder="Search products"/>
 <div class="content-container">
     <!-- Wybór kategorii -->
     <aside class="sidebar">
@@ -32,8 +32,7 @@
         </ul>
     </aside>
 
-    
-    
+
     <!-- Główna sekcja z produktami -->
     <main class="product-grid">
         @if (products == null)
@@ -106,4 +105,5 @@
     {
         selectedCategoryId = null; // Usunięcie filtra kategorii
     }
+
 }

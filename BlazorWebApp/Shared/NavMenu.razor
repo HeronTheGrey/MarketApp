@@ -1,4 +1,9 @@
-﻿<div class="top-row ps-3 navbar navbar-dark">
+﻿@using BlazorWebApp.Authentication
+@inject AuthenticationStateProvider AuthenticationStateProvider
+@inject IJSRuntime JSRuntime
+@inject NavigationManager Navigation
+
+<div class="top-row ps-3 navbar navbar-dark">
     <div class="container-fluid">
         <a class="navbar-brand" href="">MauiMarket</a>
         <button title="Navigation menu" class="navbar-toggler" @onclick="ToggleNavMenu">
@@ -9,6 +14,27 @@
 
 <div class="@NavMenuCssClass nav-scrollable" @onclick="ToggleNavMenu">
     <nav class="flex-column">
+        <AuthorizeView>
+            <NotAuthorized>
+                <div class="nav-item px-3">
+                    <button class="nav-link btn btn-link" @onclick="Login">
+                        <span class="oi oi-home" aria-hidden="true"></span> Zaloguj
+                    </button>
+                </div>
+                <div class="nav-item px-3">
+                    <button class="nav-link btn btn-link" @onclick="Register">
+                        <span class="oi oi-home" aria-hidden="true"></span> Zarejestruj
+                    </button>
+                </div>
+            </NotAuthorized>
+            <Authorized>
+                <div class="nav-item px-3">
+                    <button class="nav-link btn btn-link" @onclick="Logout">
+                        <span class="oi oi-home" aria-hidden="true"></span> Wyloguj
+                    </button>
+                </div>
+            </Authorized>
+        </AuthorizeView>
         <div class="nav-item px-3">
             <NavLink class="nav-link" href="" Match="NavLinkMatch.All">
                 <span class="oi oi-home" aria-hidden="true"></span> Strona główna
@@ -31,4 +57,26 @@
     {
         collapseNavMenu = !collapseNavMenu;
     }
+    
+    private async void Logout()
+    {
+        await JSRuntime.InvokeVoidAsync("localStorage.removeItem", "authToken");
+        if (AuthenticationStateProvider is CustomAuthStateProvider authProvider)
+        {
+            authProvider.NotifyUserLogout();
+        }
+
+        Navigation.NavigateTo("/");
+    }
+    
+    private void Login()
+    {
+        Navigation.NavigateTo("/login");
+    }
+    
+    private void Register()
+    {
+        Navigation.NavigateTo("/register");
+    }
+
 }

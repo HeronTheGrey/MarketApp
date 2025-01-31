@@ -1,36 +1,45 @@
 @using MauiMarket.Shared.Models
+@using Microsoft.AspNetCore.Components.Authorization
 @inject HttpClient Http
 @inject NavigationManager Navigation
+@inject AuthenticationStateProvider AuthenticationStateProvider
 @page "/add-product"
 
-<h1>Dodaj nowy produkt</h1>
+<AuthorizeView>
+    <Authorized>
+        <h1>Dodaj nowy produkt</h1>
 
-<div class="product-add-form">
-    <label>
-        Nazwa:
-        <input type="text" @bind="product.Name" />
-    </label>
-    <label>
-        Opis:
-        <textarea @bind="product.Description"></textarea>
-    </label>
-    <label>
-        Cena:
-        <input type="number" step="0.01" @bind="product.Price" />
-    </label>
-    <label>
-        Kategoria:
-        <select @bind="selectedCategoryId">
-            <option value="">-- Wybierz kategorię --</option>
-            @foreach (var category in categories)
-            {
-                <option value="@category.Id">@category.Name</option>
-            }
-        </select>
-    </label>
-    <button @onclick="Add">Dodaj</button>
-    <button @onclick="Cancel">Anuluj</button>
-</div>
+        <div class="product-add-form">
+            <label>
+                Nazwa:
+                <input type="text" @bind="product.Name"/>
+            </label>
+            <label>
+                Opis:
+                <textarea @bind="product.Description"></textarea>
+            </label>
+            <label>
+                Cena:
+                <input type="number" step="0.01" @bind="product.Price"/>
+            </label>
+            <label>
+                Kategoria:
+                <select @bind="selectedCategoryId">
+                    <option value="">-- Wybierz kategorię --</option>
+                    @foreach (var category in categories)
+                    {
+                        <option value="@category.Id">@category.Name</option>
+                    }
+                </select>
+            </label>
+            <button @onclick="Add">Dodaj</button>
+            <button @onclick="Cancel">Anuluj</button>
+        </div>
+    </Authorized>
+    <NotAuthorized>
+        <p>Musisz się zalogować, aby dodać produkt.</p>
+    </NotAuthorized>
+</AuthorizeView>
 
 @code {
     private Product product = new Product();
@@ -42,6 +51,7 @@
     {
         categories = await Http.GetFromJsonAsync<List<Category>>("http://localhost:5217/api/category");
     }
+
     private async Task Add()
     {
         product.CategoryId = selectedCategoryId.Value;
@@ -63,4 +73,5 @@
     {
         Navigation.NavigateTo("/");
     }
+
 }

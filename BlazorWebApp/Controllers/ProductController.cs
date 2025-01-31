@@ -1,5 +1,6 @@
 using BlazorWebApp.Data;
 using MauiMarket.Shared.Models;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 
@@ -44,6 +45,7 @@ public class ProductsController : ControllerBase
     }
 
     // POST: api/products
+    [Authorize]
     [HttpPost]
     public async Task<IActionResult> CreateProduct([FromBody] Product product)
     {
@@ -58,6 +60,7 @@ public class ProductsController : ControllerBase
     }
 
     // PUT: api/products/{id}
+    [Authorize]
     [HttpPut("{id}")]
     public async Task<IActionResult> UpdateProduct(int id, [FromBody] Product product)
     {
@@ -90,6 +93,7 @@ public class ProductsController : ControllerBase
     }
 
     // DELETE: api/products/{id}
+    [Authorize]
     [HttpDelete("{id}")]
     public async Task<IActionResult> DeleteProduct(int id)
     {

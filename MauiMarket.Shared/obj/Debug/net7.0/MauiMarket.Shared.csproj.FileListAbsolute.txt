@@ -10,3 +10,4 @@ C:\Users\bczaplicki\RiderProjects\MauiApp1\MauiMarket.Shared\obj\Debug\net7.0\Ma
 C:\Users\bczaplicki\RiderProjects\MauiApp1\MauiMarket.Shared\obj\Debug\net7.0\refint\MauiMarket.Shared.dll
 C:\Users\bczaplicki\RiderProjects\MauiApp1\MauiMarket.Shared\obj\Debug\net7.0\MauiMarket.Shared.pdb
 C:\Users\bczaplicki\RiderProjects\MauiApp1\MauiMarket.Shared\obj\Debug\net7.0\ref\MauiMarket.Shared.dll
+C:\Users\bczaplicki\RiderProjects\MauiApp1\MauiMarket.Shared\obj\Debug\net7.0\MauiMarket.Shared.csproj.AssemblyReference.cache

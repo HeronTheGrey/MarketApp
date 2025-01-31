@@ -18,9 +18,13 @@ else
                 <p><strong>Nazwa:</strong> @product.Name</p>
                 <p><strong>Opis:</strong> @product.Description</p>
                 <p><strong>Cena:</strong> @product.Price zł</p>
-                <button @onclick="EnableEditing">Modyfikuj</button>
-                <button @onclick="DeleteProduct">Usuń</button>
-                <button @onclick="GoBack">Wróć</button>
+                <AuthorizeView>
+                    <Authorized>
+                        <button @onclick="EnableEditing">Modyfikuj</button>
+                        <button @onclick="DeleteProduct">Usuń</button>
+                        <button @onclick="GoBack">Wróć</button>
+                    </Authorized>
+                </AuthorizeView>
             </div>
         }
         else
@@ -60,7 +64,7 @@ else
 
     private Product product;
     private bool isEditing = false;
-    
+
     private List<Category> categories = new List<Category>();
     private int? selectedCategoryId;
 
@@ -74,6 +78,7 @@ else
     {
         isEditing = true;
     }
+
     private async Task SaveChanges()
     {
         product.CategoryId = selectedCategoryId.Value;
@@ -109,9 +114,10 @@ else
             Console.WriteLine("Failed to delete product.");
         }
     }
-    
+
     private void GoBack()
     {
         Navigation.NavigateTo("/");
     }
+
 }

@@ -1,0 +1,50 @@
+@inject HttpClient Http
+@inject NavigationManager Navigation
+@page "/register"
+@using BlazorWebApp.Controllers
+
+<h3>Rejestracja</h3>
+
+@if (!string.IsNullOrEmpty(errorMessage))
+{
+    <div class="alert alert-danger">
+        @errorMessage
+    </div>
+}
+
+<div>
+    <label>Email:</label>
+    <input type="email" @bind="model.Email" class="form-control" />
+</div>
+<div>
+    <label>Hasło:</label>
+    <input type="password" @bind="model.Password" class="form-control" />
+</div>
+<button @onclick="PerformRegister" class="btn btn-primary">Zarejestruj</button>
+
+@code {
+    private RegisterDto model = new RegisterDto();
+    private string errorMessage = "";
+
+    private async Task PerformRegister()
+    {
+        try
+        {
+            errorMessage = "";
+
+            var response = await Http.PostAsJsonAsync("http://localhost:5217/api/auth/register", model);
+            if (response.IsSuccessStatusCode)
+            {
+                Navigation.NavigateTo("/login");
+            }
+            else
+            {
+                errorMessage = await response.Content.ReadAsStringAsync();
+            }
+        }
+        catch (Exception ex)
+        {
+            errorMessage = "Wystąpił błąd: " + ex.Message;
+        }
+    }
+}

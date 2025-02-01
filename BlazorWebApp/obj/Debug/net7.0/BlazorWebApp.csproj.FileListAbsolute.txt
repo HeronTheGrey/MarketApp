@@ -76,3 +76,6 @@ C:\Users\bczaplicki\RiderProjects\MauiApp1\BlazorWebApp\bin\Debug\net7.0\System.
 C:\Users\bczaplicki\RiderProjects\MauiApp1\BlazorWebApp\bin\Debug\net7.0\System.Text.Encodings.Web.dll
 C:\Users\bczaplicki\RiderProjects\MauiApp1\BlazorWebApp\bin\Debug\net7.0\runtimes\win\lib\net7.0\System.Security.Cryptography.Pkcs.dll
 C:\Users\bczaplicki\RiderProjects\MauiApp1\BlazorWebApp\bin\Debug\net7.0\runtimes\browser\lib\net7.0\System.Text.Encodings.Web.dll
+C:\Users\bczaplicki\RiderProjects\MauiApp1\BlazorWebApp\bin\Debug\net7.0\Newtonsoft.Json.dll
+C:\Users\bczaplicki\RiderProjects\MauiApp1\BlazorWebApp\bin\Debug\net7.0\SendGrid.dll
+C:\Users\bczaplicki\RiderProjects\MauiApp1\BlazorWebApp\bin\Debug\net7.0\StarkbankEcdsa.dll

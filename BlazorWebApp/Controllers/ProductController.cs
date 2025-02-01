@@ -1,3 +1,4 @@
+using System.Net.Mail;
 using BlazorWebApp.Data;
 using MauiMarket.Shared.Models;
 using Microsoft.AspNetCore.Authorization;
@@ -11,10 +12,12 @@ namespace BlazorWebApp.Controllers;
 public class ProductsController : ControllerBase
 {
     private readonly AppDbContext _context;
+    private readonly IEmailSender _emailSender;
 
-    public ProductsController(AppDbContext context)
+    public ProductsController(AppDbContext context, IEmailSender emailSender)
     {
         _context = context;
+        _emailSender = emailSender;
     }
 
     // GET: api/products
@@ -97,11 +100,46 @@ public class ProductsController : ControllerBase
         var product = await _context.Products.FindAsync(id);
         if (product == null)
         {
-            return NotFound();
+            return NotFound(new { message = "Produkt nie istnieje w bazie danych." });
         }
 
         _context.Products.Remove(product);
         await _context.SaveChangesAsync();
+        
+        var users = await _context.Users.ToListAsync();
+        if (users == null || users.Count == 0)
+        {
+            return Ok(new { message = "Produkt usunięty, ale brak użytkowników do powiadomienia." });
+        }
+        var subject = "Usunięcie produktu";
+        var message = $"Produkt {product.Name} został usunięty z oferty.";
+
+        if (_emailSender == null)
+        {
+            return StatusCode(500, "Błąd systemowy: EmailSender nie został poprawnie zainicjalizowany.");
+        }
+        
+        foreach (var user in users)
+        {
+            if (!string.IsNullOrWhiteSpace(user.Email) && IsValidEmail(user.Email))
+            {
+                await _emailSender.SendEmailAsync(user.Email, subject, message);
+            }
+        }
+        
         return NoContent();
+    }
+    
+    private bool IsValidEmail(string email)
+    {
+        try
+        {
+            var mailAddress = new MailAddress(email);
+            return true;
+        }
+        catch (FormatException)
+        {
+            return false;
+        }
     }
 }

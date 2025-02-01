@@ -2,6 +2,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using MauiMarket.Shared.Models;
 using BlazorWebApp.Data;
+using BlazorWebApp.Services;
 
 namespace BlazorWebApp.Controllers
 {
@@ -9,18 +10,18 @@ namespace BlazorWebApp.Controllers
     [Route("api/[controller]")]
     public class CategoryController : ControllerBase
     {
-        private readonly AppDbContext _context;
+        private readonly CategoryService _categoryService;
 
-        public CategoryController(AppDbContext context)
+        public CategoryController(CategoryService categoryService)
         {
-            _context = context;
+            _categoryService = categoryService;
         }
 
         // GET: api/Category
         [HttpGet]
         public async Task<IActionResult> GetCategories()
         {
-            var categories = await _context.Categories.ToListAsync();
+            var categories = await _categoryService.GetAllCategories();
             return Ok(categories);
         }
 
@@ -28,7 +29,7 @@ namespace BlazorWebApp.Controllers
         [HttpGet("{id}")]
         public async Task<IActionResult> GetCategory(int id)
         {
-            var category = await _context.Categories.FindAsync(id);
+            var category = await _categoryService.GetCategoryById(id);
             if (category == null)
             {
                 return NotFound();
@@ -45,9 +46,8 @@ namespace BlazorWebApp.Controllers
                 return BadRequest(ModelState);
             }
 
-            _context.Categories.Add(category);
-            await _context.SaveChangesAsync();
-            return CreatedAtAction(nameof(GetCategory), new { id = category.Id }, category);
+            var id = await _categoryService.CreateCategory(category);
+            return Ok(id);
         }
 
         // PUT: api/Category/{id}
@@ -64,42 +64,19 @@ namespace BlazorWebApp.Controllers
                 return BadRequest(ModelState);
             }
 
-            _context.Entry(category).State = EntityState.Modified;
+            var result = await _categoryService.UpdateCategory(id, category);
 
-            try
-            {
-                await _context.SaveChangesAsync();
-            }
-            catch (DbUpdateConcurrencyException)
-            {
-                if (!CategoryExists(id))
-                {
-                    return NotFound();
-                }
-                throw;
-            }
-
-            return NoContent();
+            if (result) return NoContent();
+            return NotFound();
         }
 
         // DELETE: api/Category/{id}
         [HttpDelete("{id}")]
         public async Task<IActionResult> DeleteCategory(int id)
         {
-            var category = await _context.Categories.FindAsync(id);
-            if (category == null)
-            {
-                return NotFound();
-            }
-
-            _context.Categories.Remove(category);
-            await _context.SaveChangesAsync();
-            return NoContent();
-        }
-
-        private bool CategoryExists(int id)
-        {
-            return _context.Categories.Any(e => e.Id == id);
+            var result = await _categoryService.DeleteCategory(id);
+            if (result) return NoContent();
+            return NotFound();
         }
     }
 }

@@ -10,12 +10,16 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.IdentityModel.Tokens;
 using Microsoft.AspNetCore.Components.Authorization;
 using BlazorWebApp.Authentication;
+using BlazorWebApp.Services;
 using SendGrid;
 using SendGrid.Helpers.Mail;
 
 var builder = WebApplication.CreateBuilder(args);
 
 builder.Services.AddSingleton<IEmailSender, SendGridEmailSender>();
+builder.Services.AddScoped<ProductService>();
+builder.Services.AddScoped<CategoryService>();
+builder.Services.AddScoped<AuthorizationService>();
 builder.Services.Configure<SendGridSettings>(builder.Configuration.GetSection("SendGrid"));
 
 builder.Services.AddScoped<AuthenticationStateProvider, CustomAuthStateProvider>();
